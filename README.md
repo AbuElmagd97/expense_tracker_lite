@@ -61,3 +61,25 @@ The project follows a **clean architecture** approach with separation of concern
 1. Clone the repository:
    ```bash
    git clone https://github.com/AbuElmagd97/expense_tracker_lite.git
+
+2. Install dependencies:
+   ```bash
+   flutter pub get
+
+3. Run app:
+   ```bash
+   flutter run
+
+4. Login to the app using the following credentials:
+   ```makefile
+   Email:    test@example.com  
+   Password: 123456
+
+## Contributing
+Contributions are welcome! If you have suggestions, feature requests, or bug reports, feel free to open an issue or submit a pull request.
+
+## License
+This project is licensed under the MIT License.
+
+## Contact
+For any questions or collaboration inquiries, feel free to reach out at mohamed.aboelmagd2021@gmail.com.
