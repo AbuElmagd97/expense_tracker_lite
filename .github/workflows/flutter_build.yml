@@ -37,7 +37,7 @@ jobs:
         run: flutter pub get
 
       - name: Build APK for Default Flavor 📲
-        run: flutter build apk --release
+        run: flutter build apk --release --no-tree-shake-icons
 
       - name: Upload APK as Artifact 📤
         uses: actions/upload-artifact@v4
