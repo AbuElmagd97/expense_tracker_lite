@@ -1,106 +1,63 @@
-Expense Tracker Lite
+# Expense Tracker Lite
 
-Overview
-Expense Tracker Lite is a Flutter mobile application designed to help users track their expenses easily and efficiently. The app supports multiple currencies with real-time currency conversion and persistent local storage.
+## Overview
+This Flutter app is an Expense Tracker designed to help users manage and track their expenses with currency conversion features.
 
-Architecture and Structure
-Clean Architecture principles applied with separation of concerns:
+---
 
-Data Layer: API services, repositories, local SQLite database helper.
+## Architecture and Structure
 
-Domain Layer: Business logic (e.g., currency conversion).
+The project follows a **clean architecture** approach with separation of concerns across multiple layers:
 
-Presentation Layer: UI screens, widgets, and Cubits (BLoC pattern).
+- **Data Layer**: Handles API services, repositories, and local database helper.
+- **Domain Layer** (Optional): Business logic and models.
+- **Presentation Layer**: Flutter UI widgets and state management using Cubits (BLoC).
 
-Folder structure:
+---
 
-css
-Copy
-Edit
-lib/
-features/
-add_expense/
-dashboard/
-core/
-networking/
-helpers/
-main.dart
-State Management Approach
-Uses Cubit from the flutter_bloc package for managing UI state reactively.
+## State Management
 
-Cubits handle business logic and emit states to update the UI.
+- The app uses **Flutter Bloc** package with **Cubit** for managing state.
+- Each feature has its own Cubit to handle business logic and state changes.
+- Cubits expose states like loading, success, and error to update the UI reactively.
 
-Mocktail is used for unit and widget testing.
+---
 
-API Integration
-Currency conversion handled via a REST API.
+## API Integration
 
-API calls are made through a dedicated ApiService class using the Dio HTTP client.
+- API calls are handled using **Dio** package.
+- The app uses a repository pattern to abstract API details from the UI.
+- Currency conversion data is fetched from an external API and cached locally.
 
-Repositories abstract API and data sources for cleaner logic.
+---
 
-Dependency injection is managed with GetIt.
+## Pagination Strategy
 
-Pagination Strategy
-Pagination is implemented locally on the app side for simplicity.
+- Pagination is implemented locally by fetching and displaying expenses incrementally.
+- The Cubit exposes a `hasMore` flag and `loadMoreExpenses()` method to load more data when the user scrolls.
 
-The dashboard screen loads a limited number of expenses at once and has a "Load More" button.
+---
 
-On tapping "Load More," the app fetches the next batch from the local database.
+## UI Screenshots
 
-Future versions may include API pagination.
-
-UI Screenshots
-
-Dashboard showing expense list with Load More button
+![Login Screen](assets/screenshots/login.jpeg)
+![Dashboard Screen](assets/screenshots/dashboard.jpeg)  
+![Add Expense Screen](assets/screenshots/add_expense.jpeg)
 
 
-Add Expense screen with form validation
+---
 
-(Add your actual screenshots inside the screenshots/ folder)
+## Trade-offs and Assumptions
 
-Trade-offs and Assumptions
-Currency rates are fetched on demand and cached minimally for simplicity.
+- For simplicity, offline persistence is limited to basic SQLite storage.
+- Currency rates are refreshed only when the user adds a new expense.
+- Pagination is done locally; no server-side pagination.
+- The UI code could be improved and rewritten more and more.
 
-Local SQLite database used for persistence instead of a cloud backend.
+---
 
-Pagination is local, so large datasets might affect performance.
+## How to Run the Project
 
-Error handling is basic and can be improved.
-
-No user authentication implemented yet.
-
-How to Run the Project
-Clone the repo:
-
-bash
-Copy
-Edit
-git clone https://github.com/yourusername/expense-tracker-lite.git
-cd expense-tracker-lite
-Install dependencies:
-
-bash
-Copy
-Edit
-flutter pub get
-Run on device or emulator:
-
-bash
-Copy
-Edit
-flutter run
-To run tests:
-
-bash
-Copy
-Edit
-flutter test
-Known Bugs or Unimplemented Features
-No offline synchronization for currency rates.
-
-No user profiles or multi-user support.
-
-Basic UI design — needs polish and accessibility improvements.
-
-Error states and network failure handling are minimal.
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/AbuElmagd97/expense_tracker_lite.git
