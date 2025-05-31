@@ -7,6 +7,7 @@ class CustomTextField extends StatelessWidget {
   final bool isPassword;
   final bool obscureText;
   final VoidCallback? toggleVisibility;
+  final FormFieldValidator<String>? validator;
 
   const CustomTextField({
     super.key,
@@ -15,6 +16,7 @@ class CustomTextField extends StatelessWidget {
     this.isPassword = false,
     this.obscureText = false,
     this.toggleVisibility,
+    this.validator,
   });
 
   @override
@@ -24,9 +26,10 @@ class CustomTextField extends StatelessWidget {
       children: [
         Text(label),
         const SizedBox(height: 8,),
-        TextField(
+        TextFormField(
           controller: controller,
           obscureText: obscureText,
+          validator: validator,
           decoration: InputDecoration(
             labelText: label,
             suffixIcon: isPassword

@@ -61,7 +61,7 @@ class AmountInputField extends StatelessWidget {
                     EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                 border: InputBorder.none,
               ),
-              validator: ExpenseValidator.validateAmount,
+              validator: AppValidator.validateAmount,
             ),
           ),
         ],
